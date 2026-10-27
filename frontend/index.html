@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burguer Art | Hamburgueria Artesanal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">BURGUER <span>ART</span></div>
+        <div class="nav-actions">
+            <div class="category-filters">
+                <button class="filter-btn active" onclick="filterCategory('all')">Todos</button>
+                <button class="filter-btn" onclick="filterCategory('burgers')">Burgers</button>
+                <button class="filter-btn" onclick="filterCategory('sides')">Acompanhamentos</button>
+                <button class="filter-btn" onclick="filterCategory('drinks')">Bebidas</button>
+            </div>
+            <button class="cart-btn" id="openCart">
+                🛒 Carrinho (<span id="cartCount">0</span>)
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Sabor Extraordinário em Cada Camada</h1>
+            <p>Hambúrgueres artesanais grelhados na brasa, ingredientes selecionados e entrega rápida.</p>
+        </section>
+
+        <section class="menu-section">
+            <h2>Cardápio Exclusivo</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- Produtos carregados dinamicamente via API -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal do Carrinho & Checkout -->
+    <div class="modal-overlay" id="cartModal">
+        <div class="modal-content">
+            <button class="close-btn" id="closeCart">&times;</button>
+            <h2>Seu Pedido</h2>
+            <div id="cartItems" class="cart-items">
+                <p class="empty-cart-msg">Seu carrinho está vazio.</p>
+            </div>
+            
+            <div class="cart-summary" id="cartSummarySection" style="display: none;">
+                <div class="total-row">
+                    <span>Total:</span>
+                    <strong id="cartTotal">R$ 0,00</strong>
+                </div>
+                <form id="checkoutForm">
+                    <h3>Dados para Entrega</h3>
+                    <input type="text" id="custName" placeholder="Nome Completo" required>
+                    <input type="tel" id="custPhone" placeholder="Telefone / WhatsApp" required>
+                    <input type="text" id="custAddress" placeholder="Endereço Completo (Rua, Número, Bairro)" required>
+                    <select id="custPayment" required>
+                        <option value="" disabled selected>Forma de Pagamento</option>
+                        <option value="PIX">PIX (Aprovação Instantânea)</option>
+                        <option value="Cartão de Crédito">Cartão de Crédito (Maquininha na Entrega)</option>
+                        <option value="Cartão de Débito">Cartão de Débito (Maquininha na Entrega)</option>
+                        <option value="Dinheiro">Dinheiro (Levar Troco)</option>
+                    </select>
+                    <button type="submit" class="submit-btn">Finalizar Pedido com Sucesso</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Sucesso do Pedido -->
+    <div class="modal-overlay" id="successModal">
+        <div class="success-content">
+            <div class="success-icon">🎉</div>
+            <h2>Pedido Realizado!</h2>
+            <p>Seu pedido foi enviado para a cozinha e gravado com sucesso no Banco de Dados SQLite.</p>
+            <div class="order-details-box" id="orderDetailsBox"></div>
+            <button class="submit-btn" id="closeSuccess">Fazer Novo Pedido</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
