@@ -175,3 +175,17 @@ function setupEvents() {
         }
     };
 }
+async function consultarPedido(orderId) {
+    try {
+        const response = await fetch(`${API_URL}/orders/${orderId}`);
+        const pedido = await response.json();
+        
+        if (response.ok) {
+            alert(`Status do Pedido #${pedido.id}: ${pedido.status}`);
+        } else {
+            alert("Pedido não encontrado!");
+        }
+    } catch (error) {
+        console.error("Erro ao buscar pedido:", error);
+    }
+}
