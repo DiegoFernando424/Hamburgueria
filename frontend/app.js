@@ -1,5 +1,5 @@
 // Altere a URL abaixo para o link do seu backend hospedado na nuvem (ex: Render) quando fizer o deploy
-https://hamburgueria-1-ej55.onrender.com
+const API_URL = "https://hamburgueria-1-ej55.onrender.com/api";
 let cart = [];
 let allProducts = [];
 
